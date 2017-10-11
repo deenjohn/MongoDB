@@ -1,4 +1,10 @@
 https://docs.mongodb.com/manual/tutorial/query-arrays/#read-operations-arrays
+https://docs.mongodb.com/manual/tutorial/query-array-of-documents/
+https://docs.mongodb.com/manual/tutorial/query-embedded-documents/
+
+https://mongodb.github.io/node-mongodb-native/2.2/tutorials/crud/
+https://docs.mongodb.com/manual/reference/method/db.getCollection/
+
 
 ## Insert
 
