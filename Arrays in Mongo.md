@@ -1,8 +1,8 @@
 https://docs.mongodb.com/manual/tutorial/query-arrays/#read-operations-arrays
 
-```
 ## Insert
 
+```
 db.inventory.insert([
    { item: "journal", qty: 25, tags: ["blank", "red"], dim_cm: [ 14, 21 ] },
    { item: "notebook", qty: 50, tags: ["red", "blank"], dim_cm: [ 14, 21 ] },
@@ -11,11 +11,17 @@ db.inventory.insert([
    { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [ 10, 15.25 ] }
 ]);
 
+```
 ## Find
 
+```
 db.documents.find() ;
 
+```
+
 #### Match an Array
+
+```
  
  The following example queries for all documents where the field tags 
  value is an array with exactly two elements, "red" and "blank", in the specified order:
@@ -65,8 +71,6 @@ db.inventory.find( { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } } )
 Query for an Element by the Array Index Position
 
 db.inventory.find( { "dim_cm.1": { $gt: 25 } } )
-
-
 
 
 
