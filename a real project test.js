@@ -4,6 +4,7 @@ var _ = require("lodash");
 var express = require("express");
 //var rooms = require("./../data/rooms.json");
 var MongoClient = require("mongodb").MongoClient;
+var ObjectID = require("mongodb").ObjectID;
 var assert = require("assert");
 var url = "mongodb://localhost:27017/myproject";
 
@@ -81,17 +82,24 @@ router
     res.render("rooms/edit");
   })
   .post(function(req, res) {
-    var room = {
-      name: req.body.name,
-      id: uuid.v4()
+    var name = req.body.name;
+    var roomId = req.params.id;
+
+    var filter = { id: roomId };
+
+    var newRoom = {
+      name: name,
+      id: roomId
     };
     MongoClient.connect(url, function(err, db) {
       assert.equal(null, err);
       console.log("Connected correctly to server");
-      db.collection("rooms").insertOne(room, function(error, result) {
-        res.redirect(req.baseUrl);
-        db.close();
-      });
+      db
+        .collection("rooms")
+        .updateOne(filter, newRoom, function(error, result) {
+          res.redirect(req.baseUrl);
+          db.close();
+        });
     });
     // res.locals.room.name = req.body.name;
   });
